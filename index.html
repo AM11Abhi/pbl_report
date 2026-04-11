@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PBL Presentation | 2026</title>
+    <title>SSB Practice Simulator | PBL 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
@@ -13,200 +12,354 @@
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(90deg, #60a5fa, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         #timerContainer { background: #ffffff; color: #020617; box-shadow: 0 10px 40px rgba(0,0,0,0.8); border: 3px solid #3b82f6; z-index: 1000; }
+        .feature-pill { background: rgba(96, 165, 250, 0.08); border: 1px solid rgba(96, 165, 250, 0.2); }
+        .tech-badge { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); }
+        .flow-arrow { color: #3b82f6; font-size: 1.5rem; }
+
+        /* Fade-in animation */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up { animation: fadeUp 0.6s ease both; }
+        .fade-up-d1 { animation-delay: 0.1s; }
+        .fade-up-d2 { animation-delay: 0.2s; }
+        .fade-up-d3 { animation-delay: 0.3s; }
     </style>
 </head>
 <body onload="startTimer()">
 
+<!-- Timer -->
 <div id="timerContainer" class="fixed bottom-10 right-10 px-8 py-4 rounded-3xl flex items-center gap-4 transition-all">
     <i class="fas fa-hourglass-start text-blue-600 text-2xl" id="timerIcon"></i>
     <span id="displayTime" class="text-4xl font-black font-mono tracking-tighter">00:00</span>
 </div>
 
+<!-- Navbar -->
 <nav class="fixed w-full z-50 glass border-b border-slate-800/50 px-8 py-4 flex justify-between items-center">
-    <div class="flex items-center gap-4">
-        <div class="flex flex-col text-left">
-            <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
-            <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer Science & Engineering</span>
-        </div>
+    <div class="flex flex-col text-left">
+        <span class="text-xl font-black text-white leading-none uppercase tracking-tighter">PBL <span class="text-blue-500 italic">2026</span></span>
+        <span class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-1">Dept. of Computer Science &amp; Engineering</span>
+    </div>
+    <div class="hidden md:flex gap-6 text-[10px] text-slate-400 font-bold uppercase tracking-widest">
+        <a href="#features" class="hover:text-blue-400 transition">Features</a>
+        <a href="#architecture" class="hover:text-blue-400 transition">Architecture</a>
+        <a href="#ai" class="hover:text-blue-400 transition">AI Module</a>
+        <a href="#results" class="hover:text-blue-400 transition">Results</a>
     </div>
 </nav>
 
 <main class="max-w-6xl mx-auto px-6 pt-48 pb-32 space-y-32">
-        
-<section class="text-center">
-    <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">
-        ID: 23FE10CSE00322
-    </div>
-    <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight">
-        <span class="gradient-text uppercase">SSB Practice Simulator</span>
-    </h1>
-    <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left">
-        A web-based platform designed to simulate real-time SSB psychological tests under strict time constraints while maintaining ethical, practice-only design.
-    </p>
-</section>
 
-<section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch">
-    <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
-        <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
-        <p class="text-slate-400 leading-relaxed text-justify">
-            Existing SSB preparation resources lack realistic, time-bound simulation of psychological tests, limiting exposure to actual test pressure.
+    <!-- Hero -->
+    <section class="text-center fade-up">
+        <div class="inline-block px-4 py-1 border border-slate-800 rounded-full text-slate-500 text-[10px] font-mono mb-6 uppercase tracking-widest">
+            ID: 23FE10CSE00322 &nbsp;·&nbsp; Abhinav Mishra
+        </div>
+        <h1 class="text-6xl md:text-7xl font-extrabold mb-8 uppercase leading-tight">
+            <span class="gradient-text">SSB Practice</span><br/>Simulator
+        </h1>
+        <p class="text-slate-400 max-w-2xl mx-auto italic text-lg leading-relaxed border-l-2 border-blue-500/30 pl-6 text-left mb-10">
+            A full‑stack web platform that replicates the psychological tests and AI‑powered interview simulation of the Indian Armed Forces Services Selection Board (SSB) — for ethical, practice‑only preparation.
         </p>
-    </div>
-    <div class="space-y-6">
-        <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
-            <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review</h3>
-            <p class="text-sm text-slate-500 italic">
-                Study of SSB preparation books, online platforms, and practice applications revealed limited availability of realistic timed simulation systems.
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="https://ssbprep.vercel.app" target="_blank"
+               class="px-8 py-3 bg-blue-600 rounded-full text-sm font-black hover:bg-blue-500 transition shadow-lg shadow-blue-900/40">
+                <i class="fas fa-external-link-alt mr-2"></i>VIEW LIVE DEMO
+            </a>
+            <a href="https://github.com/AM11Abhi/ssbprep" target="_blank"
+               class="px-8 py-3 glass rounded-full text-sm font-black hover:bg-white/10 transition">
+                <i class="fab fa-github mr-2"></i>SOURCE CODE
+            </a>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section id="problem" class="grid md:grid-cols-2 gap-12 items-stretch fade-up fade-up-d1">
+        <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-blue-600">
+            <h2 class="text-3xl font-extrabold mb-6">Problem Statement</h2>
+            <p class="text-slate-400 leading-relaxed text-justify">
+                Existing SSB preparation resources lack realistic, time‑bound simulation of psychological tests, limiting exposure to actual test pressure. There is no platform that combines strict timing, real content, and an AI‑powered interactive interview in one place — without scoring or evaluating the candidate.
             </p>
         </div>
-        <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
-            <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap</h3>
-            <p class="text-sm text-slate-500 italic">
-                Need for a structured, discipline-enforced, real-time simulation platform without scoring or personality evaluation.
+        <div class="space-y-6">
+            <div class="glass p-7 rounded-3xl border-r-4 border-blue-500/50">
+                <h3 class="text-blue-400 font-bold text-xs uppercase tracking-widest mb-2">Literature Review</h3>
+                <p class="text-sm text-slate-500 italic">
+                    Study of SSB preparation books and online platforms revealed limited availability of realistic timed simulation systems. Most tools provide only static question banks with no timing enforcement.
+                </p>
+            </div>
+            <div class="glass p-7 rounded-3xl border-r-4 border-purple-500/50">
+                <h3 class="text-purple-400 font-bold text-xs uppercase tracking-widest mb-2">Research Gap</h3>
+                <p class="text-sm text-slate-500 italic">
+                    Need for a structured, discipline‑enforced, real‑time simulation platform that combines all five psychological tests with an AI interviewer — without any scoring or OLQ evaluation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="space-y-12">
+        <h2 class="text-4xl font-black text-center uppercase tracking-tight">
+            Key <span class="text-blue-500">Features</span>
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass p-8 rounded-3xl flex flex-col gap-3">
+                <i class="fas fa-stopwatch text-blue-400 text-3xl"></i>
+                <h3 class="font-bold text-sm uppercase tracking-widest">5 Psychological Tests</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    WAT, TAT, SRT, SDT, and Lecturette — each with strict timers matching real SSB conditions. Content is fetched randomly from PostgreSQL so every session is unique.
+                </p>
+            </div>
+            <div class="glass p-8 rounded-3xl flex flex-col gap-3 border border-blue-500/20">
+                <i class="fas fa-robot text-purple-400 text-3xl"></i>
+                <h3 class="font-bold text-sm uppercase tracking-widest">AI Interview Simulator</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Powered by Google Gemini. User fills a detailed PIQ (11 sections). The AI Interviewing Officer conducts a realistic 20‑question interview and generates structured preparation advice.
+                </p>
+            </div>
+            <div class="glass p-8 rounded-3xl flex flex-col gap-3">
+                <i class="fas fa-microphone text-green-400 text-3xl"></i>
+                <h3 class="font-bold text-sm uppercase tracking-widest">Voice Mode</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Speak your answers via the Web Speech API. The AI's responses are read aloud via Text‑to‑Speech with a male voice preference. Continuous recognition with a 2.5s silence timeout.
+                </p>
+            </div>
+            <div class="glass p-8 rounded-3xl flex flex-col gap-3">
+                <i class="fas fa-keyboard text-yellow-400 text-3xl"></i>
+                <h3 class="font-bold text-sm uppercase tracking-widest">Interactive WAT Mode</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Users can type sentences directly during the WAT. After the test, Gemini AI analyses structure, positivity, and action‑orientation — and delivers a preparation report.
+                </p>
+            </div>
+            <div class="glass p-8 rounded-3xl flex flex-col gap-3">
+                <i class="fas fa-shield-halved text-red-400 text-3xl"></i>
+                <h3 class="font-bold text-sm uppercase tracking-widest">Safety Controls</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    Rate limiting (20 req/10 min), 10 kb payload cap, LLM output clamped to 1200 tokens, conversation history trimmed to 25 messages. No user data stored on server.
+                </p>
+            </div>
+            <div class="glass p-8 rounded-3xl flex flex-col gap-3">
+                <i class="fas fa-circle-check text-teal-400 text-3xl"></i>
+                <h3 class="font-bold text-sm uppercase tracking-widest">Ethics First</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">
+                    No scoring. No OLQ evaluation. No personality inference. The platform provides practice stimuli only — decisions are always left to the candidate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture -->
+    <section id="architecture" class="space-y-12">
+        <h2 class="text-4xl font-black text-center uppercase tracking-tight">
+            System <span class="text-blue-500">Architecture</span>
+        </h2>
+
+        <!-- Tech Stack -->
+        <div class="glass p-10 rounded-[2.5rem]">
+            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-8 text-center">Technology Stack</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fab fa-react text-blue-400 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">React 18 + Vite</p>
+                    <p class="text-[10px] text-slate-600 mt-1">Frontend</p>
+                </div>
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fab fa-node-js text-green-400 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">Node.js + Express 5</p>
+                    <p class="text-[10px] text-slate-600 mt-1">Backend API</p>
+                </div>
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fas fa-database text-sky-400 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">PostgreSQL (Supabase)</p>
+                    <p class="text-[10px] text-slate-600 mt-1">Database</p>
+                </div>
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fas fa-robot text-purple-400 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">LLM API</p>
+                    <p class="text-[10px] text-slate-600 mt-1">AI Provider</p>
+                </div>
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fas fa-cloud text-indigo-400 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">Vercel</p>
+                    <p class="text-[10px] text-slate-600 mt-1">Frontend Deploy</p>
+                </div>
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fas fa-server text-orange-400 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">Render</p>
+                    <p class="text-[10px] text-slate-600 mt-1">Backend Deploy</p>
+                </div>
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fab fa-github text-slate-300 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">GitHub</p>
+                    <p class="text-[10px] text-slate-600 mt-1">Version Control</p>
+                </div>
+                <div class="tech-badge rounded-2xl p-5">
+                    <i class="fas fa-microphone-lines text-pink-400 text-2xl mb-2"></i>
+                    <p class="text-xs font-bold">Web Speech API</p>
+                    <p class="text-[10px] text-slate-600 mt-1">Voice I/O (Browser)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backend Pattern -->
+        <div class="glass p-10 rounded-[2.5rem]">
+            <h3 class="text-xs font-bold text-slate-500 uppercase tracking-widest mb-8 text-center">Stateless Backend Flow</h3>
+            <div class="flex flex-wrap items-center justify-center gap-3 text-sm font-bold">
+                <span class="feature-pill px-5 py-3 rounded-2xl text-blue-300">Route</span>
+                <span class="flow-arrow">→</span>
+                <span class="feature-pill px-5 py-3 rounded-2xl text-blue-300">Controller</span>
+                <span class="flow-arrow">→</span>
+                <span class="feature-pill px-5 py-3 rounded-2xl text-blue-300">Service</span>
+                <span class="flow-arrow">→</span>
+                <span class="feature-pill px-5 py-3 rounded-2xl text-purple-300">LLM Service</span>
+                <span class="flow-arrow">→</span>
+                <span class="feature-pill px-5 py-3 rounded-2xl text-green-300">Gemini API</span>
+            </div>
+            <p class="text-[10px] text-slate-600 text-center mt-6 tracking-widest uppercase">
+                Full PIQ + conversation history sent with every request · No server-side sessions · No interview data stored in DB
             </p>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="methodology" class="space-y-12">
-    <h2 class="text-4xl font-black text-center uppercase tracking-tight">
-        System <span class="text-blue-500">Methodology</span>
-    </h2>
-    <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass p-8 rounded-3xl text-center">
-            <i class="fas fa-database text-blue-500 text-3xl mb-4"></i>
-            <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Database</h3>
-            <p class="text-sm text-slate-500">
-                PostgreSQL (Supabase) storing static test stimuli such as WAT words, SRT situations, TAT metadata, and Lecturette topics.
+    <!-- AI Module -->
+    <section id="ai" class="grid md:grid-cols-2 gap-12 items-stretch">
+        <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-purple-600">
+            <i class="fas fa-brain text-purple-400 text-4xl mb-6"></i>
+            <h2 class="text-3xl font-extrabold mb-4">AI Interview<br/>Simulator</h2>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                The user completes an 11‑section Personal Information Questionnaire (PIQ). This data is sent with every chat request to give Gemini full context about the candidate — background, education, family, hobbies, and achievements.
+            </p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-purple-400 mt-1"></i><span class="text-slate-400">20 questions, auto‑terminates naturally</span></li>
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-purple-400 mt-1"></i><span class="text-slate-400">Post‑interview preparation report generated by AI</span></li>
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-purple-400 mt-1"></i><span class="text-slate-400">Chat Mode (type) + Voice Mode (speak &amp; listen)</span></li>
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-purple-400 mt-1"></i><span class="text-slate-400">No OLQ scoring — practice simulation only</span></li>
+            </ul>
+        </div>
+        <div class="glass p-10 rounded-[2.5rem] flex flex-col justify-center border-l-4 border-yellow-600">
+            <i class="fas fa-keyboard text-yellow-400 text-4xl mb-6"></i>
+            <h2 class="text-3xl font-extrabold mb-4">Interactive<br/>WAT Feedback</h2>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                Users type their word‑association sentences in real time. On completion, the responses are sent to Gemini, which evaluates their linguistic structure — not personality.
+            </p>
+            <ul class="space-y-3 text-sm">
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-yellow-400 mt-1"></i><span class="text-slate-400">Auto-saves whatever is typed when 15s timer expires</span></li>
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-yellow-400 mt-1"></i><span class="text-slate-400">"End Early" button to submit anytime</span></li>
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-yellow-400 mt-1"></i><span class="text-slate-400">Feedback covers: structure, positivity, action‑orientation, preachy language</span></li>
+                <li class="flex gap-3 items-start"><i class="fas fa-circle-check text-yellow-400 mt-1"></i><span class="text-slate-400">Structured into: Observations · Strengths · Areas to Refine · Tips</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
+        <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">
+            Results &amp; <span class="text-blue-500">Impact</span>
+        </h2>
+
+        <div class="mb-12 space-y-6 text-center">
+            <div class="p-6 rounded-2xl bg-white/5 inline-flex justify-between items-center gap-8 border border-white/10 shadow-inner">
+                <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Visitors (First 2 Weeks)</span>
+                <span class="text-blue-400 font-mono font-black text-3xl">350+</span>
+            </div>
+            <p class="text-slate-500 text-sm italic max-w-3xl mx-auto leading-relaxed">
+                The platform was successfully deployed and achieved over 350 visitors within two weeks of release, demonstrating real‑world engagement and practical usability.
             </p>
         </div>
-        <div class="glass p-8 rounded-3xl text-center">
-            <i class="fas fa-microchip text-purple-500 text-3xl mb-4"></i>
-            <h3 class="font-bold mb-2 uppercase text-xs tracking-widest">Backend Architecture</h3>
-            <p class="text-sm text-slate-500">
-                Node.js + Express APIs delivering randomized content with secure deployment on Render.
-            </p>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/home.png" alt="Home Screen" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">Home Screen</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/selection.png" alt="Test Selection Page" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">Test Selection Page</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/wat.png" alt="WAT Test Screen" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">WAT – Timed Word Display</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/srt.png" alt="SRT Test Screen" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">SRT – Situation Flow</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/tat.png" alt="TAT Test Screen" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">TAT – Image Simulation</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/lecturette.png" alt="Lecturette Screen" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">Lecturette – Topic Selection</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/interview.png" alt="AI Interview Screen" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">AI Interview – Chat Interface</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border border-white/10">
+                <img src="images/feedback.png" alt="Feedback Screen" class="rounded-xl shadow-lg w-full">
+                <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">Post-Interview – Preparation Feedback</p>
+            </div>
         </div>
-        <div class="glass p-8 rounded-3xl text-center border-2 border-green-500/20 bg-green-500/5">
-    <i class="fab fa-react text-green-500 text-3xl mb-4"></i>
-    <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-green-400">
-        Live Deployment
-    </h3>
+    </section>
 
-    <div class="flex flex-col items-center gap-4">
-        <a href="https://ssbprep.vercel.app" target="_blank"
-            class="px-6 py-2 bg-green-600 rounded-full text-[10px] font-black hover:bg-green-500 transition shadow-lg shadow-green-900/40">
-            VIEW LIVE DEMO
-        </a>
-
-        <a href="https://docs.google.com/presentation/d/131dHFtSxNnVHllHKvMCShK6GRBss6J9O/edit?usp=sharing"
-            target="_blank"
-            class="px-6 py-2 bg-blue-600 rounded-full text-[10px] font-black hover:bg-blue-500 transition shadow-lg shadow-blue-900/40">
-            VIEW PPT PRESENTATION
-        </a>
-    </div>
-</div>
-
-    </div>
-</section>
-
-<section id="results" class="glass p-12 rounded-[3.5rem] border-t-4 border-blue-500">
-    <h2 class="text-3xl font-black mb-12 text-center uppercase tracking-tight">
-        Results & <span class="text-blue-500">Impact</span>
-    </h2>
-
-    <!-- Visitor Metric -->
-    <div class="mb-12 space-y-6 text-center">
-        <div class="p-6 rounded-2xl bg-white/5 inline-flex justify-between items-center gap-8 border border-white/10 shadow-inner">
-            <span class="text-slate-400 font-bold uppercase text-xs tracking-widest">Visitors (First 2 Weeks)</span>
-            <span class="text-blue-400 font-mono font-black text-3xl">350+</span>
-        </div>
-        <p class="text-slate-500 text-sm italic max-w-3xl mx-auto leading-relaxed">
-            The platform was successfully deployed and achieved over 350 visitors within two weeks of release, demonstrating real-world engagement and practical usability.
+    <!-- Conclusion -->
+    <section class="glass p-12 rounded-[3.5rem] border-t-4 border-purple-500/50 space-y-6">
+        <h2 class="text-3xl font-black text-center uppercase tracking-tight">
+            Conclusion &amp; <span class="text-purple-400">Future Work</span>
+        </h2>
+        <p class="text-slate-400 text-sm leading-relaxed max-w-3xl mx-auto text-center">
+            SSB Practice Simulator successfully bridges the gap between static SSB preparation and real‑time, AI‑powered simulation. All five psychological tests are functional with strict timing. The AI interview module conducts realistic 20‑question sessions and generates actionable feedback — all without scoring or judging the candidate.
         </p>
-    </div>
-
-    <!-- Screenshots Grid -->
-    <div class="grid md:grid-cols-2 gap-8">
-
-        <div class="glass p-4 rounded-2xl border border-white/10">
-            <img src="images/home.png" alt="Home Screen" class="rounded-xl shadow-lg">
-            <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">
-                Home Screen
-            </p>
+        <div class="grid md:grid-cols-3 gap-6 pt-4">
+            <div class="glass p-6 rounded-2xl text-center">
+                <i class="fas fa-language text-blue-400 text-2xl mb-3"></i>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-300 mb-2">Multilingual Support</p>
+                <p class="text-[11px] text-slate-600">Hindi and regional language support for wider accessibility</p>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center">
+                <i class="fas fa-chart-line text-green-400 text-2xl mb-3"></i>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-300 mb-2">Progress Tracking</p>
+                <p class="text-[11px] text-slate-600">Optional user accounts to track improvement across practice sessions</p>
+            </div>
+            <div class="glass p-6 rounded-2xl text-center">
+                <i class="fas fa-image text-yellow-400 text-2xl mb-3"></i>
+                <p class="text-xs font-bold uppercase tracking-widest text-slate-300 mb-2">Real TAT Images</p>
+                <p class="text-[11px] text-slate-600">Replacing image codes with actual TAT images for full test realism</p>
+            </div>
         </div>
+    </section>
 
-        <div class="glass p-4 rounded-2xl border border-white/10">
-            <img src="images/selection.png" alt="Test Selection Page" class="rounded-xl shadow-lg">
-            <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">
-                Test Selection Page
-            </p>
+    <!-- Academic Credits -->
+    <section id="team" class="text-center pt-10 border-t border-slate-900">
+        <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">Academic Credits</h2>
+        <div class="flex flex-wrap justify-center gap-10">
+            <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
+                <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
+                <p class="font-black text-xl text-slate-100">Dr. Ajit Noonia</p>
+            </div>
+            <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
+                <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Student — B.Tech CSE Core, 3rd Year</p>
+                <p class="font-black text-xl text-slate-100">Abhinav Mishra</p>
+                <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00322</p>
+            </div>
         </div>
-
-        <div class="glass p-4 rounded-2xl border border-white/10">
-            <img src="images/wat.png" alt="WAT Test Screen" class="rounded-xl shadow-lg">
-            <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">
-                WAT – Timed Word Display
-            </p>
-        </div>
-
-        <div class="glass p-4 rounded-2xl border border-white/10">
-            <img src="images/srt.png" alt="SRT Test Screen" class="rounded-xl shadow-lg">
-            <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">
-                SRT – Situation Flow
-            </p>
-        </div>
-
-        <div class="glass p-4 rounded-2xl border border-white/10">
-            <img src="images/tat.png" alt="TAT Test Screen" class="rounded-xl shadow-lg">
-            <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">
-                TAT – Image Simulation
-            </p>
-        </div>
-
-        <div class="glass p-4 rounded-2xl border border-white/10">
-            <img src="images/lecturette.png" alt="Lecturette Screen" class="rounded-xl shadow-lg">
-            <p class="text-xs text-slate-500 mt-3 uppercase tracking-widest text-center">
-                Lecturette – Topic Selection
-            </p>
-        </div>
-
-    </div>
-</section>
-
-<section id="team" class="text-center pt-10 border-t border-slate-900">
-    <h2 class="text-[10px] font-black text-slate-600 uppercase tracking-[0.5em] mb-12">
-        Academic Credits
-    </h2>
-    <div class="flex flex-wrap justify-center gap-10">
-        <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-blue-600">
-            <p class="text-[9px] font-bold text-blue-500 mb-2 uppercase tracking-widest">Project Guide</p>
-            <p class="font-black text-xl text-slate-100">Dr Ajit Noonia</p>
-        </div>
-        <div class="glass px-12 py-8 rounded-[2rem] border-b-4 border-slate-700">
-            <p class="text-[9px] font-bold text-slate-400 mb-2 uppercase tracking-widest">Team Member</p>
-            <p class="font-black text-xl text-slate-100">Abhinav Mishra</p>
-            <p class="text-[10px] text-slate-500 mt-1">23FE10CSE00322</p>
-        </div>
-    </div>
-</section>
+    </section>
 
 </main>
 
 <footer class="py-12 text-center bg-black/40 border-t border-slate-900">
-    <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">
-        Manipal University Jaipur
-    </p>
+    <p class="text-slate-600 text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Manipal University Jaipur</p>
     <p class="text-slate-500 text-[9px] font-medium tracking-[0.2em] uppercase opacity-50">
-        Department of Computer Science & Engineering • 2026
+        Department of Computer Science &amp; Engineering • Project Based Learning • 2026
     </p>
 </footer>
 
 <script>
 let sec = 0;
-let timer = null;
 function startTimer() {
-    timer = setInterval(() => {
+    setInterval(() => {
         sec++;
         let m = Math.floor(sec / 60);
         let s = sec % 60;
